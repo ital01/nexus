@@ -8,7 +8,21 @@
     "production": [
       "default"
     ],
-    "sharedGlobals": []
+    "sharedGlobals": [
+      "{workspaceRoot}/eslint.config.ts",
+      "{workspaceRoot}/prettier.config.ts",
+      "{workspaceRoot}/tsconfig.base.json"
+    ]
+  },
+  "targetDefaults": {
+    "lint": {
+      "cache": true,
+      "inputs": [
+        "default",
+        "^default",
+        "sharedGlobals"
+      ]
+    }
   },
   "plugins": [
     {

@@ -4,18 +4,38 @@
   "license": "MIT",
   "scripts": {},
   "private": true,
-  "dependencies": {},
   "devDependencies": {
+    "@next/eslint-plugin-next": "^16.2.6",
+    "@nx/eslint-plugin": "^22.7.2",
     "@nx/js": "22.7.2",
+    "@nx/next": "^22.7.2",
+    "@nx/react": "^22.7.2",
+    "@nx/vite": "^22.7.2",
     "@swc-node/register": "1.11.1",
-    "@swc/core": "1.15.8",
-    "@swc/helpers": "0.5.18",
+    "@swc/core": "1.15.33",
+    "@swc/helpers": "0.5.21",
+    "@typescript-eslint/eslint-plugin": "^8.59.4",
+    "@typescript-eslint/parser": "^8.59.4",
+    "eslint": "^10.4.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.5",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "husky": "^9.1.7",
+    "jiti": "^2.7.0",
+    "lint-staged": "^17.0.5",
     "nx": "22.7.2",
-    "prettier": "^3.8.1",
-    "tslib": "^2.3.0",
-    "typescript": "~5.9.2"
+    "prettier": "^3.8.3",
+    "prettier-plugin-tailwindcss": "^0.8.0",
+    "tslib": "^2.8.1",
+    "typescript": "~6.0.3"
   },
   "workspaces": [
-    "packages/*"
-  ]
+    "packages/*",
+    "apps/*"
+  ],
+  "engines": {
+    "node": "26",
+    "pnpm": "11"
+  }
 }

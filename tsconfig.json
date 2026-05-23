@@ -2,5 +2,10 @@
   "extends": "./tsconfig.base.json",
   "compileOnSave": false,
   "files": [],
-  "references": []
+  "include": [],
+  "references": [
+    { "path": "./tsconfig.config-files.json" },
+    { "path": "./apps/react-vite-project/tsconfig.json" },
+    { "path": "./apps/next-project/tsconfig.json" }
+  ]
 }

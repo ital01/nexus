@@ -9,6 +9,7 @@
     "start:next-project": "nx dev next-project",
     "build:next-project": "nx build next-project",
     "prod:next-project": "nx start next-project",
+    "build:all": "nx run-many -t build",
     "lint": "nx run-many -t lint",
     "typecheck": "nx run-many -t typecheck",
     "graph": "nx graph"

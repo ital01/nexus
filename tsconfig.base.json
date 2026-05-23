@@ -17,7 +17,6 @@
     "strict": true,
     "target": "es2022",
     "jsx": "react-jsx",
-    "baseUrl": ".",
     "paths": {},
     "customConditions": ["@org/source"]
   }

@@ -1,9 +1,7 @@
-export default function Index() {
-  /*
-   * Replace the elements below with your own.
-   *
-   * Note: The corresponding styles are in the ./index.tailwind file.
-   */
+export default async function Index() {
+  const fetchHello = await fetch('http://localhost:3000/api/hello');
+  const helloData = await fetchHello.json();
+  console.log(helloData);
   return (
     <div>
       <div className="wrapper">

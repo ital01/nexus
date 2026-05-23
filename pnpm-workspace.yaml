@@ -4,3 +4,4 @@ allowBuilds:
   less: true
   nx: true
   sharp: true
+  unrs-resolver: true

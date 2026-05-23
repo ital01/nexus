@@ -16,9 +16,9 @@ export default [
     plugins: {
       '@nx': nxPlugin,
       '@typescript-eslint': tsPlugin,
-      'react': reactPlugin,
+      react: reactPlugin,
       'react-hooks': reactHooksPlugin,
-      'prettier': eslintPluginPrettier,
+      prettier: eslintPluginPrettier,
     },
     languageOptions: {
       parser: tsParser,

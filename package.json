@@ -2,7 +2,17 @@
   "name": "@org/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "start:react-vite-project": "nx serve react-vite-project",
+    "build:react-vite-project": "nx build react-vite-project",
+    "preview:react-vite-project": "nx preview react-vite-project",
+    "start:next-project": "nx dev next-project",
+    "build:next-project": "nx build next-project",
+    "prod:next-project": "nx start next-project",
+    "lint": "nx run-many -t lint",
+    "typecheck": "nx run-many -t typecheck",
+    "graph": "nx graph"
+  },
   "private": true,
   "dependencies": {
     "react": "^19.0.0",
@@ -21,6 +31,7 @@
     "@swc/cli": "~0.8.0",
     "@swc/core": "1.15.33",
     "@swc/helpers": "0.5.21",
+    "@tailwindcss/vite": "^4.3.0",
     "@testing-library/dom": "10.4.0",
     "@testing-library/react": "16.3.0",
     "@types/node": "20.19.9",

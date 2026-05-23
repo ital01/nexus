@@ -14,13 +14,10 @@ export class BadRequestError extends HttpClientError {
           HTTP_STATUS[HTTP_STATUS_GROUP.CLIENT_ERROR].BAD_REQUEST
         ],
     });
-    super(
-      message || 'Bad Request',
-      {
-        layer: meta?.layer || 'HttpClient',
-        functionName: meta?.functionName || 'BadRequestError',
-        response: mockResponse,
-      },
-    );
+    super(message || 'Bad Request', {
+      layer: meta?.layer || 'HttpClient',
+      functionName: meta?.functionName || 'BadRequestError',
+      response: mockResponse,
+    });
   }
 }

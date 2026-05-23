@@ -5,9 +5,9 @@
     "emitDeclarationOnly": true,
     "importHelpers": true,
     "isolatedModules": true,
-    "lib": ["es2022", "dom", "dom.iterable"],
-    "module": "nodenext",
-    "moduleResolution": "nodenext",
+    "lib": ["esnext", "dom", "dom.iterable"],
+    "module": "esnext",
+    "moduleResolution": "bundler",
     "noEmitOnError": true,
     "noFallthroughCasesInSwitch": true,
     "noImplicitOverride": true,
@@ -17,7 +17,15 @@
     "strict": true,
     "target": "es2022",
     "jsx": "react-jsx",
-    "paths": {},
-    "customConditions": ["@org/source"]
+    "baseUrl": ".",
+    "paths": {
+      "@org/shared": ["libs/shared/src/index.ts"],
+      "@org/shared/*": ["libs/shared/*"],
+      "@org/brasil-api": ["libs/brasil-api/src/index.ts"],
+      "@org/brasil-api/*": ["libs/brasil-api/*"]
+    },
+    "customConditions": ["@org/source"],
+    "types": ["@js-temporal/polyfill"],
+    "ignoreDeprecations": "6.0"
   }
 }

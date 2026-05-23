@@ -1,0 +1,33 @@
+{
+  "name": "brasil-api",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/brasil-api/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/brasil-api",
+        "main": "libs/brasil-api/src/index.ts",
+        "tsConfig": "libs/brasil-api/tsconfig.json",
+        "assets": []
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/brasil-api/**/*.ts"]
+      }
+    },
+    "typecheck": {
+      "executor": "@nx/js:tsc",
+      "options": {
+        "tsConfig": "libs/brasil-api/tsconfig.json",
+        "noEmit": true
+      }
+    }
+  },
+  "tags": []
+}

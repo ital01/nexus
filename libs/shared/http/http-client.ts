@@ -28,6 +28,7 @@ type HttpMethodConfig<P extends object = object> = Omit<
 >;
 
 export type HttpResponse<T> = [T, null] | [null, HttpClientError];
+export type PromiseResponse<T> = Promise<HttpResponse<T>>;
 
 export class HttpClient {
   private readonly baseUrl: string;
@@ -71,7 +72,7 @@ export class HttpClient {
   private async request<T, P extends object = object>(
     endpoint: string,
     config: RequestConfig<P> = {},
-  ): Promise<HttpResponse<T>> {
+  ): PromiseResponse<T> {
     const { params, ...fetchConfig } = config;
     const url = this.buildUrl(endpoint, params);
     const controller = this.createTimeoutController();
@@ -138,7 +139,7 @@ export class HttpClient {
   public async GET<T, P extends object = object>(
     endpoint: string,
     config: HttpMethodConfig<P> = {},
-  ): Promise<HttpResponse<T>> {
+  ): PromiseResponse<T> {
     return await this.request<T, P>(endpoint, {
       ...config,
       method: HTTP_METHODS.GET,
@@ -148,7 +149,7 @@ export class HttpClient {
   public async POST<T, P extends object = object>(
     endpoint: string,
     config: HttpMethodConfig<P> = {},
-  ): Promise<HttpResponse<T>> {
+  ): PromiseResponse<T> {
     return await this.request<T, P>(endpoint, {
       ...config,
       method: HTTP_METHODS.POST,
@@ -158,7 +159,7 @@ export class HttpClient {
   public async PUT<T, P extends object = object>(
     endpoint: string,
     config: HttpMethodConfig<P> = {},
-  ): Promise<HttpResponse<T>> {
+  ): PromiseResponse<T> {
     return await this.request<T, P>(endpoint, {
       ...config,
       method: HTTP_METHODS.PUT,
@@ -168,7 +169,7 @@ export class HttpClient {
   public async DELETE<T, P extends object = object>(
     endpoint: string,
     config: HttpMethodConfig<P> = {},
-  ): Promise<HttpResponse<T>> {
+  ): PromiseResponse<T> {
     return await this.request<T, P>(endpoint, {
       ...config,
       method: HTTP_METHODS.DELETE,
@@ -178,7 +179,7 @@ export class HttpClient {
   public async PATCH<T, P extends object = object>(
     endpoint: string,
     config: HttpMethodConfig<P> = {},
-  ): Promise<HttpResponse<T>> {
+  ): PromiseResponse<T> {
     return await this.request<T, P>(endpoint, {
       ...config,
       method: HTTP_METHODS.PATCH,
@@ -188,7 +189,7 @@ export class HttpClient {
   public async HEAD<T, P extends object = object>(
     endpoint: string,
     config: HttpMethodConfig<P> = {},
-  ): Promise<HttpResponse<T>> {
+  ): PromiseResponse<T> {
     return await this.request<T, P>(endpoint, {
       ...config,
       method: HTTP_METHODS.HEAD,
@@ -198,7 +199,7 @@ export class HttpClient {
   public async OPTIONS<T, P extends object = object>(
     endpoint: string,
     config: HttpMethodConfig<P> = {},
-  ): Promise<HttpResponse<T>> {
+  ): PromiseResponse<T> {
     return await this.request<T, P>(endpoint, {
       ...config,
       method: HTTP_METHODS.OPTIONS,

@@ -1,5 +1,11 @@
 import { ValueObject } from '../base';
 
+const JWT_CONSTANTS = {
+  IS_VALID: true,
+  IS_EMPTY: false,
+  EMPTY_OBJECT: {} as const,
+} as const;
+
 interface IJwt {
   decode<T = object>(): T;
 }
@@ -16,11 +22,11 @@ export class Jwt implements ValueObject, IJwt {
   }
 
   public isValid(): boolean {
-    return true;
+    return JWT_CONSTANTS.IS_VALID;
   }
 
   public isEmpty(): boolean {
-    return false;
+    return JWT_CONSTANTS.IS_EMPTY;
   }
 
   public clean(): string {
@@ -40,6 +46,6 @@ export class Jwt implements ValueObject, IJwt {
   }
 
   public decode<T = object>(): T {
-    return {} as T;
+    return JWT_CONSTANTS.EMPTY_OBJECT as T;
   }
 }

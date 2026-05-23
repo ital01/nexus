@@ -1,0 +1,21 @@
+{
+  "name": "@org/brasil-api",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "build": "tsc",
+    "lint": "eslint src/**/*.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@org/shared": "workspace:*"
+  },
+  "devDependencies": {
+    "typescript": "~6.0.3",
+    "eslint": "^9.0.0"
+  }
+}

@@ -1,3 +1,9 @@
+import {
+  HTTP_STATUS,
+  HTTP_STATUS_GROUP,
+  HTTP_STATUS_TEXT,
+} from '../constants/http.constants';
+
 export interface HttpClientErrorMetadata {
   layer: string;
   functionName: string;
@@ -28,21 +34,14 @@ export class HttpClientError extends Error {
   }
 }
 
-export class HttpApiError extends HttpClientError {
-  constructor(
-    message: string,
-    response: Response,
-    meta: HttpClientErrorMetadata,
-  ) {
-    super(message, { ...meta, response });
-  }
-}
-
 export class HttpTimeoutError extends HttpClientError {
   constructor(meta: HttpClientErrorMetadata) {
     const mockResponse = new Response(null, {
-      status: 408,
-      statusText: 'Request Timeout',
+      status: HTTP_STATUS[HTTP_STATUS_GROUP.CLIENT_ERROR].REQUEST_TIMEOUT,
+      statusText:
+        HTTP_STATUS_TEXT[HTTP_STATUS_GROUP.CLIENT_ERROR][
+          HTTP_STATUS[HTTP_STATUS_GROUP.CLIENT_ERROR].REQUEST_TIMEOUT
+        ],
     });
     super('Request timeout', { ...meta, response: mockResponse });
   }
@@ -51,8 +50,11 @@ export class HttpTimeoutError extends HttpClientError {
 export class HttpUnexpectedError extends HttpClientError {
   constructor(originalError: Error, meta: HttpClientErrorMetadata) {
     const mockResponse = new Response(null, {
-      status: 500,
-      statusText: 'Internal Server Error',
+      status: HTTP_STATUS[HTTP_STATUS_GROUP.SERVER_ERROR].INTERNAL_SERVER_ERROR,
+      statusText:
+        HTTP_STATUS_TEXT[HTTP_STATUS_GROUP.SERVER_ERROR][
+          HTTP_STATUS[HTTP_STATUS_GROUP.SERVER_ERROR].INTERNAL_SERVER_ERROR
+        ],
     });
     super(
       originalError.message || 'Unexpected error',

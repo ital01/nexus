@@ -1,3 +1,9 @@
+export const HTTP_DEFAULT_TIMEOUT = 30000;
+
+export const HTTP_ERROR_NAMES = {
+  ABORT: 'AbortError',
+} as const;
+
 export const HTTP_METHODS = {
   GET: 'GET',
   POST: 'POST',

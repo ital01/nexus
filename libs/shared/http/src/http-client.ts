@@ -1,11 +1,15 @@
-import { HTTP_METHODS } from './constants/http.constants';
+import {
+  HTTP_METHODS,
+  HTTP_DEFAULT_TIMEOUT,
+  HTTP_ERROR_NAMES,
+} from './constants/http.constants';
 import {
   HttpClientError,
-  HttpApiError,
   HttpTimeoutError,
   HttpUnexpectedError,
   HttpParseError,
 } from './error/http-client.error';
+import { HttpMethod } from './types/http.types';
 
 export interface HttpClientConfig {
   baseUrl: string;
@@ -15,6 +19,7 @@ export interface HttpClientConfig {
 
 export interface RequestConfig<P extends object = object> extends RequestInit {
   params?: P;
+  method?: HttpMethod;
 }
 
 type HttpMethodConfig<P extends object = object> = Omit<
@@ -31,7 +36,7 @@ export class HttpClient {
 
   constructor(config: HttpClientConfig) {
     this.baseUrl = config.baseUrl.replace(/\/$/, '');
-    this.timeout = config.timeout || 30000;
+    this.timeout = config.timeout || HTTP_DEFAULT_TIMEOUT;
     this.headers = {
       'Content-Type': 'application/json',
       ...config.headers,
@@ -106,13 +111,16 @@ export class HttpClient {
       if (!response.ok) {
         return [
           null,
-          new HttpApiError('Request failed', response.clone(), meta),
+          new HttpClientError(
+            `Request failed with status ${response.status}: ${response.statusText}`,
+            { ...meta, response: response.clone() },
+          ),
         ];
       }
 
       return [body as T, null];
     } catch (error: unknown) {
-      if (this.isError(error) && error.name === 'AbortError') {
+      if (this.isError(error) && error.name === HTTP_ERROR_NAMES.ABORT) {
         return [null, new HttpTimeoutError(meta)];
       }
 

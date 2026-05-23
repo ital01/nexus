@@ -2,14 +2,14 @@ import {
   HTTP_METHODS,
   HTTP_DEFAULT_TIMEOUT,
   HTTP_ERROR_NAMES,
-} from './constants/http.constants';
+} from './src/constants/http.constants';
 import {
   HttpClientError,
   HttpTimeoutError,
   HttpUnexpectedError,
   HttpParseError,
-} from './error/http-client.error';
-import { HttpMethod } from './types/http.types';
+} from './src/error/http-client.error';
+import { HttpMethod } from './src/types/http.types';
 
 export interface HttpClientConfig {
   baseUrl: string;

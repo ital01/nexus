@@ -1,4 +1,4 @@
-import type { Config } from 'tailwindcss'
+import type { Config } from 'tailwindcss';
 import { createGlobPatternsForDependencies } from '@nx/react/tailwind';
 import { join } from 'path';
 

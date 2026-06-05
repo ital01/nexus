@@ -20,7 +20,7 @@ importers:
     dependencies:
       next:
         specifier: ^16.2.7
-        version: 16.2.7(@babel/core@7.29.7)(babel-plugin-macros@3.1.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(sass@1.100.0)
+        version: 16.2.7(@babel/core@7.29.7)(babel-plugin-macros@3.1.0)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(sass@1.100.0)
       react:
         specifier: ^19.2.7
         version: 19.2.7
@@ -45,7 +45,7 @@ importers:
         version: 22.7.5(@babel/traverse@7.29.7)(@swc-node/register@1.11.1(@swc/core@1.15.40(@swc/helpers@0.5.23))(@swc/types@0.1.26)(typescript@6.0.3))(@swc/core@1.15.40(@swc/helpers@0.5.23))(nx@22.7.5(@swc-node/register@1.11.1(@swc/core@1.15.40(@swc/helpers@0.5.23))(@swc/types@0.1.26)(typescript@6.0.3))(@swc/core@1.15.40(@swc/helpers@0.5.23)))
       '@nx/next':
         specifier: ^22.7.5
-        version: 22.7.5(949c0125537a63cf0afc64db0201dcc8)
+        version: 22.7.5(a8a2d0179e6bf0abb6ffaa659bbc8187)
       '@nx/react':
         specifier: ^22.7.5
         version: 22.7.5(b601b4ba91305c42351ff588395d5683)
@@ -58,6 +58,9 @@ importers:
       '@nx/web':
         specifier: 22.7.5
         version: 22.7.5(4e7602625d3984e38acde16d5e3e604b)
+      '@rolldown/plugin-babel':
+        specifier: ^0.2.3
+        version: 0.2.3(@babel/core@7.29.7)(@babel/plugin-transform-runtime@7.29.7(@babel/core@7.29.7))(@babel/runtime@7.29.7)(rolldown@1.0.3)(vite@8.0.16(@types/node@25.9.1)(jiti@2.7.0)(less@4.5.1)(sass-embedded@1.100.0)(sass@1.100.0)(terser@5.48.0)(yaml@2.9.0))
       '@swc-node/register':
         specifier: 1.11.1
         version: 1.11.1(@swc/core@1.15.40(@swc/helpers@0.5.23))(@swc/types@0.1.26)(typescript@6.0.3)
@@ -102,7 +105,7 @@ importers:
         version: 8.60.1(eslint@10.4.1(jiti@2.7.0))(typescript@6.0.3)
       '@vitejs/plugin-react':
         specifier: ^6.0.2
-        version: 6.0.2(vite@8.0.16(@types/node@25.9.1)(jiti@2.7.0)(less@4.5.1)(sass-embedded@1.100.0)(sass@1.100.0)(terser@5.48.0)(yaml@2.9.0))
+        version: 6.0.2(@rolldown/plugin-babel@0.2.3(@babel/core@7.29.7)(@babel/plugin-transform-runtime@7.29.7(@babel/core@7.29.7))(@babel/runtime@7.29.7)(rolldown@1.0.3)(vite@8.0.16(@types/node@25.9.1)(jiti@2.7.0)(less@4.5.1)(sass-embedded@1.100.0)(sass@1.100.0)(terser@5.48.0)(yaml@2.9.0)))(babel-plugin-react-compiler@1.0.0)(vite@8.0.16(@types/node@25.9.1)(jiti@2.7.0)(less@4.5.1)(sass-embedded@1.100.0)(sass@1.100.0)(terser@5.48.0)(yaml@2.9.0))
       '@vitest/coverage-v8':
         specifier: ~4.1.8
         version: 4.1.8(vitest@4.1.8)
@@ -115,6 +118,9 @@ importers:
       babel-jest:
         specifier: ~30.4.1
         version: 30.4.1(@babel/core@7.29.7)
+      babel-plugin-react-compiler:
+        specifier: ^1.0.0
+        version: 1.0.0
       eslint:
         specifier: ^10.4.1
         version: 10.4.1(jiti@2.7.0)
@@ -2254,6 +2260,23 @@ packages:
     cpu: [x64]
     os: [win32]
 
+  '@rolldown/plugin-babel@0.2.3':
+    resolution: {integrity: sha512-+zEk16yGlz1F9STiRr6uG9hmIXb6nprjLczV/htGptYuLoCuxb+itZ03RKCEeOhBpDDd1NU7qF6x1VLMUp62bw==}
+    engines: {node: '>=22.12.0 || ^24.0.0'}
+    peerDependencies:
+      '@babel/core': ^7.29.0 || ^8.0.0-rc.1
+      '@babel/plugin-transform-runtime': ^7.29.0 || ^8.0.0-rc.1
+      '@babel/runtime': ^7.27.0 || ^8.0.0-rc.1
+      rolldown: ^1.0.0-rc.5
+      vite: ^8.0.0
+    peerDependenciesMeta:
+      '@babel/plugin-transform-runtime':
+        optional: true
+      '@babel/runtime':
+        optional: true
+      vite:
+        optional: true
+
   '@rolldown/pluginutils@1.0.1':
     resolution: {integrity: sha512-2j9bGt5Jh8hj+vPtgzPtl72j0yRxHAyumoo6TNfAjsLB04UtpSvPbPcDcBMxz7n+9CYB0c1GxQFxYRg2jimqGw==}
 
@@ -3640,6 +3663,9 @@ packages:
     resolution: {integrity: sha512-M762rNHfSF1EV3SLtnCJXFoQbbIIz0OyRwnCmV0KPC7qosSfCO0QLTSuJX3ayAebubhE6oYBAYPrBA5ljowaZg==}
     peerDependencies:
       '@babel/core': ^7.4.0 || ^8.0.0-0 <8.0.0
+
+  babel-plugin-react-compiler@1.0.0:
+    resolution: {integrity: sha512-Ixm8tFfoKKIPYdCCKYTsqv+Fd4IJ0DQqMyEimo+pxUOMUR9cVPlwTrFt9Avu+3cb6Zp3mAzl+t1MrG2fxxKsxw==}
 
   babel-plugin-transform-typescript-metadata@0.3.2:
     resolution: {integrity: sha512-mWEvCQTgXQf48yDqgN7CH50waTyYBeP2Lpqx4nNWab9sxEpdXVeKgfj1qYI2/TgUPQtNFZ85i3PemRtnXVYYJg==}
@@ -7525,7 +7551,6 @@ packages:
 
   tailwindcss@4.3.0:
     resolution: {integrity: sha512-y6nxMGB1nMW9R6k96e5gdIFzcfL/gTJRNaqGes1YvkLnPVXzWgbqFF2yLC0T8G774n24cx3Pe8XrKoniCOAH+Q==}
-    hasBin: true
 
   tapable@2.3.0:
     resolution: {integrity: sha512-g9ljZiwki/LfxmQADO3dEY1CbpmXT5Hm2fJ+QaGKwSXUylMybePR7/67YW7jOrrvjEgL1Fmz5kzyAjWVWLlucg==}
@@ -10255,7 +10280,7 @@ snapshots:
       - vue-tsc
       - webpack-cli
 
-  '@nx/next@22.7.5(949c0125537a63cf0afc64db0201dcc8)':
+  '@nx/next@22.7.5(a8a2d0179e6bf0abb6ffaa659bbc8187)':
     dependencies:
       '@babel/plugin-proposal-decorators': 7.29.7(@babel/core@7.29.7)
       '@nx/devkit': 22.7.5(nx@22.7.5(@swc-node/register@1.11.1(@swc/core@1.15.40(@swc/helpers@0.5.23))(@swc/types@0.1.26)(typescript@6.0.3))(@swc/core@1.15.40(@swc/helpers@0.5.23)))
@@ -10268,7 +10293,7 @@ snapshots:
       '@svgr/webpack': 8.1.0(typescript@6.0.3)
       copy-webpack-plugin: 14.0.0(webpack@5.107.2(@swc/core@1.15.40(@swc/helpers@0.5.23))(postcss@8.5.15))
       ignore: 7.0.5
-      next: 16.2.7(@babel/core@7.29.7)(babel-plugin-macros@3.1.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(sass@1.100.0)
+      next: 16.2.7(@babel/core@7.29.7)(babel-plugin-macros@3.1.0)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(sass@1.100.0)
       semver: 7.8.1
       tslib: 2.8.1
       webpack-merge: 5.10.0
@@ -10858,6 +10883,16 @@ snapshots:
 
   '@rolldown/binding-win32-x64-msvc@1.0.3':
     optional: true
+
+  '@rolldown/plugin-babel@0.2.3(@babel/core@7.29.7)(@babel/plugin-transform-runtime@7.29.7(@babel/core@7.29.7))(@babel/runtime@7.29.7)(rolldown@1.0.3)(vite@8.0.16(@types/node@25.9.1)(jiti@2.7.0)(less@4.5.1)(sass-embedded@1.100.0)(sass@1.100.0)(terser@5.48.0)(yaml@2.9.0))':
+    dependencies:
+      '@babel/core': 7.29.7
+      picomatch: 4.0.4
+      rolldown: 1.0.3
+    optionalDependencies:
+      '@babel/plugin-transform-runtime': 7.29.7(@babel/core@7.29.7)
+      '@babel/runtime': 7.29.7
+      vite: 8.0.16(@types/node@25.9.1)(jiti@2.7.0)(less@4.5.1)(sass-embedded@1.100.0)(sass@1.100.0)(terser@5.48.0)(yaml@2.9.0)
 
   '@rolldown/pluginutils@1.0.1': {}
 
@@ -11736,10 +11771,13 @@ snapshots:
   '@unrs/resolver-binding-win32-x64-msvc@1.12.2':
     optional: true
 
-  '@vitejs/plugin-react@6.0.2(vite@8.0.16(@types/node@25.9.1)(jiti@2.7.0)(less@4.5.1)(sass-embedded@1.100.0)(sass@1.100.0)(terser@5.48.0)(yaml@2.9.0))':
+  '@vitejs/plugin-react@6.0.2(@rolldown/plugin-babel@0.2.3(@babel/core@7.29.7)(@babel/plugin-transform-runtime@7.29.7(@babel/core@7.29.7))(@babel/runtime@7.29.7)(rolldown@1.0.3)(vite@8.0.16(@types/node@25.9.1)(jiti@2.7.0)(less@4.5.1)(sass-embedded@1.100.0)(sass@1.100.0)(terser@5.48.0)(yaml@2.9.0)))(babel-plugin-react-compiler@1.0.0)(vite@8.0.16(@types/node@25.9.1)(jiti@2.7.0)(less@4.5.1)(sass-embedded@1.100.0)(sass@1.100.0)(terser@5.48.0)(yaml@2.9.0))':
     dependencies:
       '@rolldown/pluginutils': 1.0.1
       vite: 8.0.16(@types/node@25.9.1)(jiti@2.7.0)(less@4.5.1)(sass-embedded@1.100.0)(sass@1.100.0)(terser@5.48.0)(yaml@2.9.0)
+    optionalDependencies:
+      '@rolldown/plugin-babel': 0.2.3(@babel/core@7.29.7)(@babel/plugin-transform-runtime@7.29.7(@babel/core@7.29.7))(@babel/runtime@7.29.7)(rolldown@1.0.3)(vite@8.0.16(@types/node@25.9.1)(jiti@2.7.0)(less@4.5.1)(sass-embedded@1.100.0)(sass@1.100.0)(terser@5.48.0)(yaml@2.9.0))
+      babel-plugin-react-compiler: 1.0.0
 
   '@vitest/coverage-v8@4.1.8(vitest@4.1.8)':
     dependencies:
@@ -12280,6 +12318,10 @@ snapshots:
       '@babel/helper-define-polyfill-provider': 0.6.8(@babel/core@7.29.7)
     transitivePeerDependencies:
       - supports-color
+
+  babel-plugin-react-compiler@1.0.0:
+    dependencies:
+      '@babel/types': 7.29.7
 
   babel-plugin-transform-typescript-metadata@0.3.2(@babel/core@7.29.7)(@babel/traverse@7.29.7):
     dependencies:
@@ -15070,7 +15112,7 @@ snapshots:
 
   neo-async@2.6.2: {}
 
-  next@16.2.7(@babel/core@7.29.7)(babel-plugin-macros@3.1.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(sass@1.100.0):
+  next@16.2.7(@babel/core@7.29.7)(babel-plugin-macros@3.1.0)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(sass@1.100.0):
     dependencies:
       '@next/env': 16.2.7
       '@swc/helpers': 0.5.15
@@ -15089,6 +15131,7 @@ snapshots:
       '@next/swc-linux-x64-musl': 16.2.7
       '@next/swc-win32-arm64-msvc': 16.2.7
       '@next/swc-win32-x64-msvc': 16.2.7
+      babel-plugin-react-compiler: 1.0.0
       sass: 1.100.0
       sharp: 0.34.5
     transitivePeerDependencies:

@@ -1,6 +1,7 @@
 /// <reference types='vitest' />
 import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
+import react, { reactCompilerPreset } from '@vitejs/plugin-react';
+import babel from '@rolldown/plugin-babel';
 import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
 import { nxCopyAssetsPlugin } from '@nx/vite/plugins/nx-copy-assets.plugin';
 import tailwindcss from '@tailwindcss/vite';
@@ -18,6 +19,9 @@ export default defineConfig(() => ({
   },
   plugins: [
     react(),
+    babel({
+      presets: [reactCompilerPreset()],
+    }),
     nxViteTsPaths(),
     nxCopyAssetsPlugin(['*.md']),
     tailwindcss(),

@@ -5,6 +5,7 @@ import babel from '@rolldown/plugin-babel';
 import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
 import { nxCopyAssetsPlugin } from '@nx/vite/plugins/nx-copy-assets.plugin';
 import tailwindcss from '@tailwindcss/vite';
+import { tanstackRouter } from '@tanstack/router-vite-plugin';
 
 export default defineConfig(() => ({
   root: import.meta.dirname,
@@ -18,6 +19,10 @@ export default defineConfig(() => ({
     host: 'localhost',
   },
   plugins: [
+    tanstackRouter({
+      target: 'react',
+      autoCodeSplitting: true,
+    }),
     react(),
     babel({
       presets: [reactCompilerPreset()],
